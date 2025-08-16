@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para Lucero 💝</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: black;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    .mensaje {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ff66cc;
+      font-size: 2em;
+      text-shadow: 0 0 10px #ff66cc, 0 0 20px #ff99ff, 0 0 30px #ff3399;
+      text-align: center;
+      display: none;
+    }
+
+    .teamo {
+      position: absolute;
+      top: -50px;
+      color: #ff99ff;
+      font-size: 1.5em;
+      text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff66ff, 0 0 30px #ff33cc;
+      animation: caer 5s linear infinite;
+    }
+
+    @keyframes caer {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+
+    .boton {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px 40px;
+      background: #ff33cc;
+      color: white;
+      font-size: 1.5em;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      box-shadow: 0 0 20px #ff33cc;
+    }
+    .boton:hover {
+      background: #ff66ff;
+    }
+  </style>
+</head>
+<body>
+  <!-- Botón para iniciar -->
+  <button class="boton" onclick="iniciar()">💝 Toca aquí Lucero 💝</button>
+
+  <!-- Mensaje principal -->
+  <div class="mensaje" id="mensaje">
+    ✨ Te amo Lucero 💝 ✨
+  </div>
+
+  <!-- Música desde Google Drive -->
+  <audio id="musica" loop preload="auto">
+    <source src="https://drive.google.com/uc?export=download&id=17mevkII-DNHIzNroYo0jjaUNKoZr0NkD" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
+
+  <script>
+    function crear() {
+      const corazon = document.createElement("div");
+      corazon.classList.add("teamo");
+      corazon.innerText = "Te amo Lucero 💝";
+      corazon.style.left = Math.random() * window.innerWidth + "px";
+      document.body.appendChild(corazon);
+
+      setTimeout(() => {
+        corazon.remove();
+      }, 5000);
+    }
+
+    function iniciar() {
+      document.querySelector(".boton").style.display = "none";
+      document.getElementById("mensaje").style.display = "block";
+
+      let musica = document.getElementById("musica");
+      musica.play().catch(() => {
+        alert("Lucero 💝 toca otra vez para activar la música 🎶");
+      });
+
+      setInterval(crear, 350);
+    }
+  </script>
+</body>
+</html>
